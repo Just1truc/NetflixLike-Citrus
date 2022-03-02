@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo npm install --save mysql2
+sudo npm install dotenv
+sudo cat init.sql | mysql -u root -p
+node transcript.js movies.json

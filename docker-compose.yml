@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  backend:
+    build: backend/
+    restart: always
+    networks:
+      - back-tier
+  frontend:
+    build: frontend/
+    restart: always
+    networks:
+      - back-tier
+
+networks:
+  backtier:
