@@ -18,3 +18,21 @@ CREATE TABLE IF NOT EXISTS movies
     description TEXT,
     picture TEXT
 );
+
+CREATE TABLE IF NOT EXISTS account
+(
+    id BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    email TEXT,
+    password TEXT,
+    name TEXT,
+    firstname TEXT,
+);
+
+CREATE TABLE IF NOT EXISTS credit_card
+(
+    id BIGINT unique NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    credit_card BIGINT,
+    password TEXT,
+    account_id BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY (account_id) REFERENCES account(id) ON DELETE CASCADE
+);
