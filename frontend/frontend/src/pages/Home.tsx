@@ -13,11 +13,11 @@ const Home = ():JSX.Element => {
                 <Flexbox justifyContent="flex-start" marginLeft='1cm'>
                     <img src={logo} width="120vw" height="120vw"/>
                 </Flexbox>
-                    <Link to="/login" style={{textDecoration:"none"}}>
                         <Flexbox justifyContent="flex-end" marginRight='1cm' marginTop='0.8cm'>
-                        <input type="button" style={{backgroundColor:"#e10712", width:"25%", color:"white", border:"none", height:"40px", minWidth:"100px", marginLeft:"35%", justifyContent:"center", borderRadius:"5px", fontWeight:"bold"}} value="S'identifier" />
+                            <Link to="/login" style={{textDecoration:"none", height:"40px"}}>
+                                <input type="button" style={{backgroundColor:"#e10712", width:"25%", color:"white", border:"none", height:"40px", minWidth:"100px", justifyContent:"center", borderRadius:"5px", fontWeight:"bold"}} value="S'identifier" />
+                            </Link>
                         </Flexbox>
-                    </Link>
                 </Flexbox>
                 <div style={{position:"absolute", top:"17%", left:"30%", right:"30%"}}>
                     <h1 style={{color:"white", fontSize:"3vw", textAlign:"center", minWidth:"240px"}}>
