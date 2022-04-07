@@ -17,6 +17,7 @@ router.post('/register', (req, res) => {
         name : req.body.name,
         firstname : req.body.firstname
     }
+    console.log(info);
     if (any(info) == false)
         res.sendStatus(400);
     else
@@ -26,15 +27,12 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
     const info = {
         email : req.body.email,
-        password : req.body.password,
-        name : req.body.name,
-        firstname : req.body.firstname,
-        id : req.id
+        password : req.body.password
     }
     if (any(info) == false)
         res.sendStatus(400);
     else
-        queries.register(req, res, info);
+        queries.login(req, res, info);
 });
 
 module.exports = router;

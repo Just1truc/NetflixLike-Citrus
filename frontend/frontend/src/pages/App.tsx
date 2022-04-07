@@ -2,8 +2,11 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Browse from "./Browse";
 import Home from "./Home";
 import Login from "./Login";
+import { useState } from "react";
+import Register from './Register';
 
-const App = () : JSX.Element => (
+const App = () : JSX.Element => {
+    return (
     <>
         <BrowserRouter>
             <Routes>
@@ -13,10 +16,12 @@ const App = () : JSX.Element => (
                 <Route path="/profile" element={<h1>profile</h1>} />
                 <Route path="/signup" element={<h1>signUp</h1>} />
                 <Route path="/login" element={<Login/>} />
+                <Route path="/register" element={<Register/>} />
                 <Route path="/accounts" element={<h1>Accounts</h1>} />
             </Routes>
         </BrowserRouter>
     </>
-);
+    )
+};
 
 export default App;

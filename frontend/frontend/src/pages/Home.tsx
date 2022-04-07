@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Flexbox from 'flexbox-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -5,7 +6,17 @@ const logo = require("./images/logo2.png");
 const background = require('./images/netflix.jpg');
 
 const Home = ():JSX.Element => {
-    const [searchString, setSearchString] = useState();
+    const [activated, setActivated] = useState("nope");
+    const [mouse, setMouse] = useState(false);
+
+    function check_input(value: any) {
+        var regex = new RegExp("^([a-zA-Z0-9+-|_~(){}$?]+@+[a-zA-Z0-9+-|_~(){}$?]+\\.+[a-zA-Z]+)$");
+        if (regex.test(value) == true) {
+            setActivated(value);
+        } else
+            setActivated("nope");
+    }
+
     return (
         <>
             <div style={{ backgroundImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 1%, rgba(255, 255, 255, 0) 50%), linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, 0) 50%), " + `url(${background})`, height:"1000px", backgroundSize:"cover", backgroundRepeat: "no-repeat"}}>
@@ -38,9 +49,11 @@ const Home = ():JSX.Element => {
                     </p>
                     <form style={{justifyContent:"center"}}>
                       <label>
-                        <input type="text" style={{backgroundColor:"white", border: "solid 1px grey", height:"60px", width:"100%", minWidth:"240px", color:"grey", borderRadius:"5px", fontSize:"120%" }} name="name" value={searchString} onChange={searchString}/>
+                        <input type="text" style={{backgroundColor:"white", border: "solid 1px grey", height:"60px", width:"100%", minWidth:"240px", color:"grey", borderRadius:"5px", fontSize:"120%" }} name="name" placeholder="E-mail" onChange={(event) => {check_input(event.target.value)}}/>
                       </label>
-                      <input type="submit" style={{backgroundColor:"#e10712", width:"25%", color:"white", border:"none", height:"60px", minWidth:"100px", marginLeft:"35%", justifyContent:"center", borderRadius:"5px", marginTop:"3%", fontWeight:"bold"}} value="Commencer >" />
+                      <Link to={{pathname: "/register"}} style={{width:"25%", height:"60px", minWidth:"100px", marginLeft:"35%", borderRadius:"5px", marginTop:"3%"}} onClick={(event) => {localStorage.setItem("teub", activated)}}>
+                        <input type="button" style={{backgroundColor:"#e10712", width:"25%", color:"white", border:(mouse ? "solid white" : "none"), height:"60px", minWidth:"100px", justifyContent:"center", borderRadius:"5px", marginTop:"3%", fontWeight:"bold", opacity:(activated === "nope" ? 0.5 : 1)}} value="Commencer >" disabled={!(activated != "nope")} onMouseOver={(event) => {setMouse(true)}} onMouseOut={(event) => setMouse(false)} />
+                      </Link>
                     </form>
                 </div>
             </div>

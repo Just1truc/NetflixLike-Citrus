@@ -8,30 +8,13 @@ import { Container } from 'react-dom';
 import DropDownBox from './DropDownBox';
 import axios from 'axios';
 import Movie from './Movie';
+import Row from './Row';
+import './theme/row.css';
+
 const logo = require('./images/logo2.png');
 const magnifying_glass = require('./images/magnifying_glass.png');
 const profile = require('./images/profile.png');
 const bellicon = require('./images/bellIcon.png');
-
-//<div className="UpBorder">
-//<Flexbox flexDirection="row" justifyContent="space-between">
-//    <Flexbox justifyContent="flex-start" marginLeft="1cm">
-//        <img src={logo} height="100" width="100"/>
-//    </Flexbox>
-//    <Flexbox justifyContent="flex-end" marginRight="1cm" alignItems="center">
-//    <div className="search-box">
-//      <button className="btn-search"><img src={magnifying_glass} width="40" height="40" margin-left="10" className="loupe"/><i className="fas fa-search"></i></button>
-//      <input type="text" className="input-search"/>
-//    </div>
-//    <div className="DropDown">
-//        <Flexbox justifyContent="space-between" width="3.5cm">
-//            <DropDownList items={[{"name" : "ok"},{ "name" : "ok"}, { "name" : "ok"}]}/>
-//            <img src={profile} width="50" height="50"/>
-//        </Flexbox>
-//    </div>
-//    </Flexbox>
-//</Flexbox>
-//</div>
 
 const Browse = ():JSX.Element => {
     axios.get('http://localhost:8080/')
@@ -41,9 +24,10 @@ const Browse = ():JSX.Element => {
     .catch((error) => {
         console.log(error);
     })
+    const nbr = 50;
     return (
     <>
-        <Navbar>
+        <Navbar style={{position:"absolute"}}>
             <Flexbox flexDirection="row" justifyContent="space-between">
                 <Flexbox justifyContent="flex-start">
                     <img src={logo} width="100px" height="100px"/>
@@ -83,9 +67,7 @@ const Browse = ():JSX.Element => {
                 </Flexbox>
             </Flexbox>
         </Navbar>
-        <Flexbox flexDirection="row">
-            <Movie src={require("./images/logo.png")}></Movie>
-        </Flexbox>
+        <Row items="80"></Row>
     </>
     );
 }

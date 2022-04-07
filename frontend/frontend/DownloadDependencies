@@ -1,6 +1,8 @@
 #!/bin/sh
+sudo npm install --save react@^16.0.0
+sudo npm install --save react-dom@^16.0.0
 sudo npm install --save react-router-dom
 sudo npm install --save flexbox-react
 sudo npm install styled-components
-sudo npm install --save react-horizontal-scroll-container --force
+sudo npm install -S horizontal-scroll
 sudo npm install --save @chakra-ui/react

@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS account
     email TEXT,
     password TEXT,
     name TEXT,
-    firstname TEXT,
+    firstname TEXT
 );
 
 CREATE TABLE IF NOT EXISTS credit_card

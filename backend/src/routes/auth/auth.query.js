@@ -1,15 +1,16 @@
 const db = require('./../../config/db_connexion');
+const jwt = require('jsonwebtoken');
 
-function insertUser(array, res)
+function insertUser(req, res)
 {
     db.query(
-        "INSERT INTO `user` (email, password, name, firstname) VALUES (?, ?, ?, ?)",
-        [array],
+        "INSERT INTO `account` (email, password, name, firstname) VALUES (?, ?, ?, ?)",
+        [req.body.email, req.body.password, req.body.name, req.body.firstname],
         function(err, result, fields) {
         if (err) {
             res.status(400).send("Bad request");
         } else {
-            db.query("SELECT MAX(id) FROM `user`", (err, result, fields) => {
+            db.query("SELECT MAX(id) FROM `account`", (err, result, fields) => {
                 if (err) res.status(500).send("Database error");
                 else {
                     const id = result[0];
@@ -28,20 +29,44 @@ function register(req, res, info) {
         array.push(info[key])
     }
     db.query(
-    "SELECT `id` FROM `user` WHERE `email`=? OR `firstname`=? OR `name`=?", [info.email, info.firstname, info.name],
+    "SELECT * FROM account WHERE (email=? OR firstname=? OR name=?)", [req.body.email, req.body.firstname, req.body.name],
     function (err, result, fields) {
         if (err) {
-          res.status(400).send("Bad Request");
+            console.log(result);
+            console.log(err);
+            res.status(400).send("Bad Request");
         } else {
-          check = result;
-          console.log(result);
+          console.log("ok pedale");
           if (result.length != 0)
             res.status(409).json({"msg" : "account already exists"});
           else
-            insertUser(array, res)
+            insertUser(req, res)
         }
       }
     )
 }
 
-module.exports = { register };
+function login(req, res, info) {
+    const array = []
+    for (var key in info) {
+        array.push(info[key])
+    }
+
+    db.query(
+        "SELECT `id` FROM `account` WHERE `email`=? AND `password`=?", array, function (err, result, fields) {
+            if (err) res.sendStatus(500);
+            else {
+                if (result.length == 0)
+                    res.sendStatus(404);
+                else {
+                    const id = result[0];
+                    const user = { id: id };
+                    const accessToken = jwt.sign(user, process.env.SECRET, { expiresIn: '3600s' });
+                    res.status(200).send({ "token" : accessToken });
+                }
+            }
+        }
+    )
+}
+
+module.exports = { register, login };
