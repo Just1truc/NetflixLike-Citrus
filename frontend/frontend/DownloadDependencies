@@ -6,3 +6,6 @@ sudo npm install --save flexbox-react
 sudo npm install styled-components
 sudo npm install -S horizontal-scroll
 sudo npm install --save @chakra-ui/react
+sudo npm install --save react-toastify
+sudo npm install --save styled-components
+sudo npm install --save react-jwt

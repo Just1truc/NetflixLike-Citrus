@@ -1,4 +1,38 @@
 
+.Popup {
+  position:absolute;
+  height:"100%";
+  width:"100%";
+  background-color:"black";
+  opacity:"1";
+  border:solid white;
+}
+
+.Movie-box {
+  border:none;
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.Movie-box:hover {
+  border:solid white;
+  margin-left: "2px";
+}
+
+.flip-horizontaly {
+  transform: scaleX(-1);
+}
+
+.ScrollHori {
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.ScrollHori::-webkit-scrollbar {
+  display: none;
+}
+
 .Input-class, select {
   width: 100%;
   padding: 12px 20px;

@@ -17,22 +17,24 @@
     "axios": "^0.26.1",
     "flexbox-react": "^4.4.0",
     "framer-motion": "^3.10.6",
+    "glamor": "^2.20.40",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-horizontal-scroll": "6.0.0",
     "react-horizontal-scroll-container": "^1.0.1",
     "react-horizontal-scrolling": "^0.1.8",
+    "react-jwt": "^1.1.4",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "react-scroll-horizontal": "^1.6.6",
     "react-simple-horizontal-scroller": "^1.0.10",
+    "react-toastify": "^8.2.0",
     "styled-components": "^5.3.5",
     "swiper": "^8.0.7",
     "typescript": "^4.6.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "HOST=0.0.0.0 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -54,5 +56,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.25"
   }
 }

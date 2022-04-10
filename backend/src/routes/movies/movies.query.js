@@ -10,10 +10,11 @@ function get_movies(req, res) {
 }
 
 function get_movie(res, jbv) {
-    db.query("SELECT * FROM `movies` WHERE `id`=?", [jbv], (err, result, fields) => {
+    db.query("SELECT * FROM `movies` WHERE `show_id`=?", [jbv], (err, result, fields) => {
         if (err) res.sendStatus(500);
         else {
-            res.status(200).status(result);
+            console.log(result);
+            res.status(200).send(result);
         }
     });
 }

@@ -3,3 +3,4 @@ sudo npm install express --save
 sudo npm install dotenv --save
 sudo npm install --save mysql2
 sudo npm install jsonwebtoken --save
+sudo npm install cors --save

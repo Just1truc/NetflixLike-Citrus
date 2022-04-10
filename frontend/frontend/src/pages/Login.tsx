@@ -3,18 +3,28 @@ import { Input, Button } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import Flexbox from 'flexbox-react';
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import { injectStyle } from "react-toastify/dist/inject-style";
+import { css } from 'glamor';
+import styled from 'styled-components';
 
 const background = require('./images/netflix.jpg');
 
 const Login = () : JSX.Element => {
+    injectStyle();
+    const navigate = useNavigate();
     const [email, setEmail] = useState(false);
     const [password, setPassword] = useState(false);
+    const [mouse, setMouse] = useState(false);
+    const [error, setErrorValue] = useState(false);
 
     function check_email(value: any) {
         var regex = new RegExp("^([a-zA-Z0-9+-|_~(){}$?]+@+[a-zA-Z0-9+-|_~(){}$?]+\\.+[a-zA-Z]+)$");
         var regex2 = new RegExp("^[0-9 ]$")
         if (regex.test(value) == true || regex2.test(value))
-            setEmail(true);
+            setEmail(value);
         else
             setEmail(false);
     }
@@ -22,9 +32,25 @@ const Login = () : JSX.Element => {
     function check_password(value: any) {
         var regex = new RegExp("^[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+$");
         if (regex.test(value) == true)
-            setPassword(true);
+            setPassword(value);
         else
             setPassword(false);
+    }
+
+    function sendRequest() {
+        if (email != false && mouse != false) {
+            axios.post('http://localhost:8080/login', {"email": email, "password" : password})
+            .then((response) => {
+                if (response.status == 200) {
+                    localStorage.setItem("token", response.data["token"]);
+                    console.log(localStorage.getItem("token"));
+                    navigate(`/browse`)
+                }
+            })
+            .catch((err) => {
+                toast.error("Ce compte n'existe pas ou le mot de passe est invalide", {pauseOnHover:false, closeButton:false});
+            });
+        }
     }
 
     return (
@@ -42,7 +68,8 @@ const Login = () : JSX.Element => {
                     </h1>
                     <Input type='text' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="E-mail ou numéro de téléphone" onChange={(event) => {check_email(event.target.value)}}></Input>
                     <input type='password' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="Mot de passe" onChange={(event) => {check_password(event.target.value)}}></input>
-                    <Button style={{backgroundColor:"red", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px", fontSize:"100%", borderRadius:"5px", marginTop:"10%", fontWeight:"bold", opacity:(!email || !password) ? 0.5 : 1}} disabled={email && password}>S'identifier</Button>
+                    {error ? <h1 style={{color:"red", fontSize:"15px", marginLeft:'10%', maxWidth:"80%"}}>Ce compte n'existe pas ou le mot de passe est invalide</h1> : <></>}
+                    <Button style={{backgroundColor:"red", color:"#FAFAFA", border:(mouse ? "solid white" : "none"), width:"80%", marginLeft:"10%", height:"50px", fontSize:"100%", borderRadius:"5px", marginTop:"10%", fontWeight:"bold", opacity:(!email || !password) ? 0.5 : 1}} disabled={email == false && password == false} onMouseOver={(event) => {setMouse(true)}} onMouseOut={(event) => setMouse(false)} onClick={() => {sendRequest()}} >S'identifier</Button>
                     <div style={{marginTop:"0.5cm", marginLeft:"10%"}}>
                         <Flexbox flexDirection="row">
                             <Flexbox justifyContent="space-between" style={{width:"100%"}}>
@@ -67,6 +94,7 @@ const Login = () : JSX.Element => {
                     </div>
                     </div>
                 </div>
+                <ToastContainer theme="dark" position="bottom-right"/>
             </div>
         </>
     )
