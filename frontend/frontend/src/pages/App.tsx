@@ -25,7 +25,7 @@ const App = () : JSX.Element => {
     <>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home/>}/>
+                <Route path="/" element={(getItem() === undefined) ? <Home/>:<Navigate to="/browse"/>}/>
                 <Route path="/browse" element={(getItem() === undefined) ? <Navigate to="/"/>:<Browse/>} />
                 <Route path="/profile" element={<h1>profile</h1>} />
                 <Route path="/login" element={<Login/>} />

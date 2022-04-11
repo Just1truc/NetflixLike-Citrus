@@ -5,7 +5,7 @@ import Flexbox from 'flexbox-react';
 
 const PopUp = (props: any) : JSX.Element => {
 
-    const [object, setObject] = useState<any>([{"picture" : "ok", "title" : "ok", "description":"ok"}])
+    const [object, setObject] = useState<any>([{"picture" : "No info", "title" : "No info", "description":"No info", "cast" : "No info", "listed_in" : "No info", "release_year" : "No info", "duration" : "No info", "country" : "No info", "director" : "No info"}])
     const token = localStorage.getItem("token");
 
     function getObjects() {
@@ -26,8 +26,8 @@ const PopUp = (props: any) : JSX.Element => {
 
     return (
         <>
-            <div style={{position:"absolute", top:"0px", width:"100%", height:"100%", backgroundColor:"black", opacity:0.5}}></div>
-            <div style={{position:"absolute", height:"100%", width:"80%", left:"10%", top:"10%", backgroundColor:"#161616", borderRadius:"30px"}}>
+            <div style={{position:"fixed", top:"0px", width:"100%", height:"140%", backgroundColor:"black", opacity:0.5}}></div>
+            <div style={{position:"fixed", height:"100%", width:"100%", top:"0%", left:"0%", backgroundColor:"#141414", borderRadius:"30px"}}>
                 <Flexbox justifyContent="flex-end">
                 <div style={{marginRight:"3%"}}>
                     <CloseButton onClick={props.onClose}/>
@@ -44,8 +44,56 @@ const PopUp = (props: any) : JSX.Element => {
                             @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
                         </style>
                         <p style={{color:"white", fontSize:"20px"}}>{object[0]["description"]}</p>
+                        <Flexbox flexDirection="row" style={{height:"35px"}}>
+                            <style>
+                                @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+                            </style>
+                            <p style={{color:"#949494", fontSize:"20px"}}>Genre:</p>
+                            <p style={{color:"white", fontSize:"20px", marginLeft:"5px", width:"80%"}}>{object[0]["listed_in"]}</p>
+                        </Flexbox>
+                        <Flexbox flexDirection="row" style={{height:"35px"}}>
+                            <style>
+                                @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+                            </style>
+                            <p style={{color:"#949494", fontSize:"20px"}}>Release year:</p>
+                            <p style={{color:"white", fontSize:"20px", marginLeft:"5px", width:"80%"}}>{object[0]["release_year"]}</p>
+                        </Flexbox>
+                        <Flexbox flexDirection="row" style={{height:"35px"}}>
+                            <style>
+                                @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+                            </style>
+                            <p style={{color:"#949494", fontSize:"20px"}}>Duration:</p>
+                            <p style={{color:"white", fontSize:"20px", marginLeft:"5px", width:"80%"}}>{object[0]["duration"]}</p>
+                        </Flexbox>
+                        <Flexbox flexDirection="row" style={{height:"35px"}}>
+                            <style>
+                                @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+                            </style>
+                            <p style={{color:"#949494", fontSize:"20px"}}>Pays:</p>
+                            <p style={{color:"white", fontSize:"20px", marginLeft:"5px", width:"80%"}}>{object[0]["country"]}</p>
+                        </Flexbox>
                     </div>
                 </Flexbox>
+                <div style={{marginLeft:"100px", marginTop:"30px"}}>
+                    <style>
+                        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+                    </style>
+                    <Flexbox flexDirection="row">
+                        <p style={{color:"white", fontSize:"25px"}}>A propos de </p>
+                        <style>
+                            @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+                        </style>
+                        <p style={{color:"white", marginLeft:"7px", fontWeight:"bold", fontSize:"25px"}}>{object[0]["title"]}</p>
+                    </Flexbox>
+                    <Flexbox flexDirection="row" style={{height : "100%"}}>
+                        <p style={{color:"#949494", fontSize:"20px"}}>Cast:</p>
+                        <p style={{color:"white", fontSize:"20px", marginLeft:"5px", width:"80%"}}>{object[0]["cast"]}</p>
+                    </Flexbox>
+                    <Flexbox flexDirection="row" style={{height: "100%"}}>
+                        <p style={{color:"#949494", fontSize:"20px"}}>Director:</p>
+                        <p style={{color:"white", fontSize:"20px", marginLeft:"5px", width:"80%"}}>{object[0]["director"]}</p>
+                    </Flexbox>
+                </div>
             </div>
         </>
     )

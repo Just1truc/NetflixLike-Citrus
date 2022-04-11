@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS movies
     duration TEXT,
     listed_in TEXT,
     description TEXT,
-    picture TEXT
+    picture TEXT,
+    FULLTEXT(title, cast)
 );
 
 CREATE TABLE IF NOT EXISTS account

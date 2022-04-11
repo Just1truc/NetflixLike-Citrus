@@ -91,7 +91,7 @@
   outline: none;
   border-radius: 25px;
   transition: all 0.5s ease-in-out;
-  background-color: rgb(14, 13, 13);
+  background-color: #181818;
   padding-right: 40px;
   color:#fff;
 }
@@ -166,10 +166,13 @@
 }
 
 body {
-    background-color: rgb(14, 14, 14);
+    background-color: rgb(25, 25, 25);
     margin-top: 0em;
     margin-left: 0em;
     margin-right: 0em;
-    position: relative;
     font-family: 'Open Sans', sans-serif;
+}
+
+html {
+  margin-top: 0;
 }
