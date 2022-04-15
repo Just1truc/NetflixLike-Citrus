@@ -1,9 +1,15 @@
-FROM node:latest
+FROM node:latest AS builder
 
 WORKDIR /app
 
-COPY frontend-app .
+COPY frontend/ .
 
-RUN npm install
+RUN ./DownloadDependencies
 
-CMD ["npm", "start"]
+FROM node:latest AS launcher
+
+WORKDIR /app
+
+COPY --from=builder . .
+
+CMD ["npm", "run", "start"]

@@ -6,4 +6,8 @@ router.get("/", (req, res) => {
     queries.get_account(req, res);
 });
 
+router.post("/update", (req, res) => {
+    queries.update_account(req, res);
+});
+
 module.exports = router;

@@ -52,7 +52,7 @@ const Browse = ():JSX.Element => {
         .then((response) => {
             const data : any = [];
             for (var item in response.data)
-                data.push(<div style={{width:"210px"}}><img id={response.data[item]['show_id']} width="200px" height="300px" className='Movie-box' src={response.data[item]["picture"]}  style={{marginLeft:"5px", marginRight:"5px", objectFit:"cover"}} onClick={(event) => {setVisible(true); setFocus(event.currentTarget.id)}}></img></div>)
+                data.push(<div style={{width:"210px"}}><img id={response.data[item]['show_id']} width="200px" height="300px" className='zoom' src={response.data[item]["picture"]}  style={{marginLeft:"5px", marginRight:"5px", objectFit:"cover"}} onClick={(event) => {setVisible(true); setFocus(event.currentTarget.id)}}></img></div>)
             setOutput(data);
         })
     }
@@ -65,9 +65,9 @@ const Browse = ():JSX.Element => {
             const Movies : any = [];
             for (var item in response.data) {
                 if (response.data[item]["type"] === "TV Show")
-                    serie.push(<div style={{width:"210px"}}><img id={response.data[item]['show_id']} width="200px" height="300px" className='Movie-box' src={response.data[item]["picture"]}  style={{marginLeft:"5px", marginRight:"5px", objectFit:"cover"}} onClick={(event) => {setVisible(true); setFocus(event.currentTarget.id)}}></img></div>);
+                    serie.push(<div style={{width:"210px"}}><img id={response.data[item]['show_id']} width="200px" height="300px" className='zoom' src={response.data[item]["picture"]}  style={{marginLeft:"5px", marginRight:"5px", objectFit:"cover"}} onClick={(event) => {setVisible(true); setFocus(event.currentTarget.id)}}></img></div>);
                 else
-                    Movies.push(<div style={{width:"210px"}}><img id={response.data[item]['show_id']} width="200px" height="300px" className='Movie-box' src={response.data[item]["picture"]}  style={{marginLeft:"5px", marginRight:"5px", objectFit:"cover"}} onClick={(event) => {setVisible(true); setFocus(event.currentTarget.id)}}></img></div>);
+                    Movies.push(<div style={{width:"210px"}}><img id={response.data[item]['show_id']} width="200px" height="300px" className='zoom' src={response.data[item]["picture"]}  style={{marginLeft:"5px", marginRight:"5px", objectFit:"cover"}} onClick={(event) => {setVisible(true); setFocus(event.currentTarget.id)}}></img></div>);
             }
             setMovies(Movies);
             setSeries(serie);
@@ -97,26 +97,26 @@ const Browse = ():JSX.Element => {
                     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
                 </style><h1 style={{ color: "white", marginLeft: "10%", marginTop: "200px" }}>{films}</h1><div style={{ width: "100%" }} className=".ScrollHori">
                         <Flexbox flexDirection='row'>
-                            <img src={arrow} width="40px" height="50px" style={{ marginTop: "110px", marginLeft: "2%" }} onMouseDown={(event) => { scroll(-500, ref); } } />
-                            <div style={{ maxWidth: "90%", width: "90%", overflow: "scroll", marginLeft: "2%", marginRight: "2%", height: "310px" }} className="ScrollHori" ref={ref}>
-                                <Flexbox flexDirection='row' key={movies}>
+                            <img src={arrow} width="40px" height="50px" style={{ marginTop: "145px", marginLeft: "2%" }} onMouseDown={(event) => { scroll(-500, ref); } } />
+                            <div style={{ maxWidth: "90%", width: "90%", overflow: "scroll", marginLeft: "2%", marginRight: "2%", height: "350px" }} className="ScrollHori" ref={ref}>
+                                <Flexbox flexDirection='row' key={movies} style={{marginTop:"25px"}}>
                                     {movies}
                                 </Flexbox>
                             </div>
-                            <img src={arrow} width="40px" height="50px" className='flip-horizontaly' style={{ marginTop: "110px", marginRight: "2%" }} onMouseDown={(event) => { scroll(500, ref); } } />
+                            <img src={arrow} width="40px" height="50px" className='flip-horizontaly' style={{ marginTop: "145px", marginRight: "2%" }} onMouseDown={(event) => { scroll(500, ref); } } />
                         </Flexbox>
                     </div><style>
                         @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
                     </style>
                     <h1 style={{ color: "white", marginLeft: "10%", marginTop: "80px" }}>Series</h1><div style={{ width: "100%" }} className=".ScrollHori">
                         <Flexbox flexDirection='row'>
-                            <img src={arrow} width="40px" height="50px" style={{ marginTop: "110px", marginLeft: "2%" }} onMouseDown={(event) => { scroll(-500, ref2); } } />
-                            <div style={{ maxWidth: "90%", width: "90%", overflow: "scroll", marginLeft: "2%", marginRight: "2%", height: "310px" }} className="ScrollHori" ref={ref2}>
-                                <Flexbox flexDirection='row' key={Series}>
+                        <img src={arrow} width="40px" height="50px" style={{ marginTop: "145px", marginLeft: "2%" }} onMouseDown={(event) => { scroll(-500, ref2); } } />
+                            <div style={{ maxWidth: "90%", width: "90%", overflow: "scroll", marginLeft: "2%", marginRight: "2%", height: "350px" }} className="ScrollHori" ref={ref2}>
+                                <Flexbox flexDirection='row' key={Series} style={{marginTop:"25px"}}>
                                     {Series}
                                 </Flexbox>
                             </div>
-                            <img src={arrow} width="40px" height="50px" className='flip-horizontaly' style={{ marginTop: "110px", marginRight: "2%" }} onMouseDown={(event) => { scroll(500, ref2); } } />
+                            <img src={arrow} width="40px" height="50px" className='flip-horizontaly' style={{ marginTop: "145px", marginRight: "2%" }} onMouseDown={(event) => { scroll(500, ref2); } } />
                         </Flexbox>
                     </div></>
         ) : 
@@ -164,7 +164,7 @@ const Browse = ():JSX.Element => {
                 <Flexbox flexDirection='row' style={{marginRight:"1cm", marginTop:"0.7cm"}}>
                     <div className="search-box">
                         <button className="btn-search"><img src={magnifying_glass} width="40" height="40" margin-left="10" className="loupe"/><i className="fas fa-search"></i></button>
-                        <input type="text" className="input-search" placeholder='Search' value={searchVal} onChange={(event) => {setSearchValue(event.target.value); Search(event.target.value)}}/>
+                        <input type="text" className="input-search" placeholder='Search' value={searchVal} onChange={(event) => {setSearchValue(event.target.value); Search(event.target.value); setChoosenMovie(false); setChoosenSerie(false)}}/>
                     </div>
                     <img height="50px" width="50px" src={profile} onClick={() => RedirectToAccount()}/>
                 </Flexbox>

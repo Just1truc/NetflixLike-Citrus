@@ -1,9 +1,16 @@
-FROM golang:lastest
+FROM node:latest AS builder
 
 WORKDIR .
 
 COPY . .
 
-RUN go mod download
+RUN npm i
+RUN ./DownloadDependencies
 
-CMD ["./backend"]
+FROM node:latest AS launcher
+
+WORKDIR .
+
+COPY --from=builder . .
+
+CMD ["npm", "run", "start"]

@@ -29,11 +29,3 @@ CREATE TABLE IF NOT EXISTS account
     firstname TEXT
 );
 
-CREATE TABLE IF NOT EXISTS credit_card
-(
-    id BIGINT unique NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    credit_card BIGINT,
-    password TEXT,
-    account_id BIGINT UNSIGNED NOT NULL,
-    FOREIGN KEY (account_id) REFERENCES account(id) ON DELETE CASCADE
-);

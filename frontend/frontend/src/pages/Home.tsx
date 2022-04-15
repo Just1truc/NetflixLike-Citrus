@@ -52,7 +52,7 @@ const Home = ():JSX.Element => {
                         <input type="text" style={{backgroundColor:"white", border: "solid 1px grey", height:"60px", width:"100%", minWidth:"240px", color:"grey", borderRadius:"5px", fontSize:"120%" }} name="name" placeholder="E-mail" onChange={(event) => {check_input(event.target.value)}}/>
                       </label>
                       <Link to={{pathname: "/register"}} style={{width:"25%", height:"60px", minWidth:"100px", marginLeft:"35%", borderRadius:"5px", marginTop:"3%"}} onClick={(event) => {localStorage.setItem("teub", activated)}}>
-                        <input type="button" style={{backgroundColor:"#e10712", width:"25%", color:"white", border:(mouse ? "solid white" : "none"), height:"60px", minWidth:"100px", justifyContent:"center", borderRadius:"5px", marginTop:"3%", fontWeight:"bold", opacity:(activated === "nope" ? 0.5 : 1)}} value="Commencer >" disabled={!(activated != "nope")} onMouseOver={(event) => {setMouse(true)}} onMouseOut={(event) => setMouse(false)} />
+                        <input type="button" className='zoom' style={{backgroundColor:"#e10712", width:"25%", color:"white", border:"none", height:"60px", minWidth:"100px", justifyContent:"center", borderRadius:"5px", marginTop:"3%", fontWeight:"bold", opacity:(activated === "nope" ? 0.5 : 1)}} value="Commencer >" disabled={!(activated != "nope")} />
                       </Link>
                     </form>
                 </div>

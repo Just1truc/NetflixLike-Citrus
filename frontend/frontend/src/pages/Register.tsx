@@ -12,7 +12,7 @@ import { injectStyle } from "react-toastify/dist/inject-style";
 const background = require("./images/netflix.jpg");
 
 
-const Register = () : JSX.Element => {
+const Register = (props : any) : JSX.Element => {
     injectStyle();
     let email = localStorage.getItem("teub");
     if (email === null)
@@ -58,6 +58,7 @@ const Register = () : JSX.Element => {
         .then((response) => {
             if (response.status === 200) {
                 localStorage.setItem("token", response.data["token"])
+                props.setToken(true);
                 naviguate(`/browse`);
             } else {
                 setError("true");
@@ -85,7 +86,7 @@ const Register = () : JSX.Element => {
                         <></>
                     : <h1 style={{color:"red", marginLeft:"10%", fontSize:"15px"}}>Le mail, nom ou prenom existent déjà</h1>}
                     <div style={{width:"25%", height:"60px", minWidth:"100px", marginLeft:"35%", borderRadius:"5px", marginTop:"3%"}}>
-                        <input type="button" style={{backgroundColor:"#e10712", width:"100%", color:"white", border:(mouse ? "solid white" : "none"), height:"60px", minWidth:"100px", justifyContent:"center", borderRadius:"5px", fontWeight:"bold", opacity:((mail === "bs" || password === "bs" || firstname === "bs" || name === "bs") ? 0.5 : 1)}} value="Commencer >" disabled={!(mail != "bs" && password != "bs" && firstname != "bs" && name != "bs")} onMouseOver={(event) => {setMouse(true)}} onMouseOut={(event) => setMouse(false)} onClick={() => {sendRequest()}} />
+                        <input type="button" className="zoom" style={{backgroundColor:"#e10712", width:"100%", color:"white", border:"none", height:"60px", minWidth:"100px", justifyContent:"center", borderRadius:"5px", fontWeight:"bold", opacity:((mail === "bs" || password === "bs" || firstname === "bs" || name === "bs") ? 0.5 : 1)}} value="S'inscrire" disabled={!(mail != "bs" && password != "bs" && firstname != "bs" && name != "bs")} onClick={() => {sendRequest()}} />
                     </div>
                 </div>
                 <ToastContainer theme="dark" position="bottom-right"/>

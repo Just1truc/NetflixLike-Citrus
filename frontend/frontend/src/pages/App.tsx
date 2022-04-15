@@ -9,6 +9,8 @@ import { decodeToken, isExpired } from 'react-jwt';
 
 const App = () : JSX.Element => {
 
+    const [connected, setConnected] = useState(false);
+
     const getItem = () : string | null | undefined => {
         let token = localStorage.getItem("token");
         if (token != undefined) {
@@ -22,15 +24,19 @@ const App = () : JSX.Element => {
         return token;
     }
 
+    const setUp = () : boolean => {
+        return (!(getItem() === undefined) || connected === true)
+    }
+
     return (
     <>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={(getItem() === undefined) ? <Home/>:<Navigate to="/browse"/>}/>
-                <Route path="/browse" element={(getItem() === undefined) ? <Navigate to="/"/>:<Browse/>} />
-                <Route path="/YourAccount" element={(getItem() === undefined) ? <Navigate to="/"/> : <YourAccount/>} />
-                <Route path="/login" element={<Login/>} />
-                <Route path="/register" element={<Register/>} />
+                <Route path="/" element={(setUp() === false) ? <Home/>:<Navigate to="/browse"/>}/>
+                <Route path="/browse" element={(setUp() === false) ? <Navigate to="/"/>:<Browse/>} />
+                <Route path="/YourAccount" element={(setUp() === false) ? <Navigate to="/"/> : <YourAccount/>} />
+                <Route path="/login" element={<Login setToken={() => setConnected(true)}/>} />
+                <Route path="/register" element={<Register setToken={() => setConnected(true)}/>} />
             </Routes>
         </BrowserRouter>
     </>

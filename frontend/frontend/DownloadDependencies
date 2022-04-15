@@ -1,11 +1,11 @@
 #!/bin/sh
-sudo npm install --save react@^16.0.0
-sudo npm install --save react-dom@^16.0.0
-sudo npm install --save react-router-dom
-sudo npm install --save flexbox-react
-sudo npm install styled-components
-sudo npm install -S horizontal-scroll
-sudo npm install --save @chakra-ui/react
-sudo npm install --save react-toastify
-sudo npm install --save styled-components
-sudo npm install --save react-jwt
+npm install --save react@^16.0.0
+npm install --save react-dom@^16.0.0
+npm install --save react-router-dom
+npm install --save flexbox-react
+npm install styled-components
+npm install -S horizontal-scroll
+npm install --save @chakra-ui/react
+npm install --save react-toastify
+npm install --save styled-components
+npm install --save react-jwt

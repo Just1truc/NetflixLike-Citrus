@@ -1,6 +1,6 @@
 #!/bin/bash
-sudo npm install express --save
-sudo npm install dotenv --save
-sudo npm install --save mysql2
-sudo npm install jsonwebtoken --save
-sudo npm install cors --save
+npm install express --save
+npm install dotenv --save
+npm install --save mysql2
+npm install jsonwebtoken --save
+npm install cors --save

@@ -12,7 +12,7 @@ import styled from 'styled-components';
 
 const background = require('./images/netflix.jpg');
 
-const Login = () : JSX.Element => {
+const Login = (props: any) : JSX.Element => {
     injectStyle();
     const navigate = useNavigate();
     const [email, setEmail] = useState(false);
@@ -23,7 +23,7 @@ const Login = () : JSX.Element => {
     function check_email(value: any) {
         var regex = new RegExp("^([a-zA-Z0-9+-|_~(){}$?]+@+[a-zA-Z0-9+-|_~(){}$?]+\\.+[a-zA-Z]+)$");
         var regex2 = new RegExp("^[0-9 ]$")
-        if (regex.test(value) == true || regex2.test(value))
+        if (regex.test(value) == true || regex2.test(value) == true)
             setEmail(value);
         else
             setEmail(false);
@@ -38,12 +38,15 @@ const Login = () : JSX.Element => {
     }
 
     function sendRequest() {
-        if (email != false && mouse != false) {
+        console.log(email);
+        console.log(password);
+        if (email != false && password != false) {
             axios.post('http://localhost:8080/login', {"email": email, "password" : password})
             .then((response) => {
                 if (response.status == 200) {
                     localStorage.setItem("token", response.data["token"]);
                     console.log(localStorage.getItem("token"));
+                    props.setToken();
                     navigate(`/browse`)
                 }
             })
@@ -69,7 +72,7 @@ const Login = () : JSX.Element => {
                     <Input type='text' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="E-mail ou numéro de téléphone" onChange={(event) => {check_email(event.target.value)}}></Input>
                     <input type='password' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="Mot de passe" onChange={(event) => {check_password(event.target.value)}}></input>
                     {error ? <h1 style={{color:"red", fontSize:"15px", marginLeft:'10%', maxWidth:"80%"}}>Ce compte n'existe pas ou le mot de passe est invalide</h1> : <></>}
-                    <Button style={{backgroundColor:"red", color:"#FAFAFA", border:(mouse ? "solid white" : "none"), width:"80%", marginLeft:"10%", height:"50px", fontSize:"100%", borderRadius:"5px", marginTop:"10%", fontWeight:"bold", opacity:(!email || !password) ? 0.5 : 1}} disabled={email == false && password == false} onMouseOver={(event) => {setMouse(true)}} onMouseOut={(event) => setMouse(false)} onClick={() => {sendRequest()}} >S'identifier</Button>
+                    <Button className="zoom" style={{backgroundColor:"red", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px", fontSize:"100%", borderRadius:"5px", marginTop:"10%", fontWeight:"bold", opacity:(!email || !password) ? 0.5 : 1}} disabled={email == false || password == false} onClick={() => {sendRequest()}} >S'identifier</Button>
                     <div style={{marginTop:"0.5cm", marginLeft:"10%"}}>
                         <Flexbox flexDirection="row">
                             <Flexbox justifyContent="space-between" style={{width:"100%"}}>
