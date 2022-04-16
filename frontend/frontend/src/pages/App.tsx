@@ -32,7 +32,7 @@ const App = () : JSX.Element => {
     <>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={(setUp() === false) ? <Home/>:<Navigate to="/browse"/>}/>
+                <Route path="/" element={<Home/>}/>
                 <Route path="/browse" element={(setUp() === false) ? <Navigate to="/"/>:<Browse/>} />
                 <Route path="/YourAccount" element={(setUp() === false) ? <Navigate to="/"/> : <YourAccount/>} />
                 <Route path="/login" element={<Login setToken={() => setConnected(true)}/>} />

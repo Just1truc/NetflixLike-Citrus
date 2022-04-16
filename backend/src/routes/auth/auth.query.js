@@ -13,8 +13,9 @@ function insertUser(req, res)
             db.query("SELECT MAX(id) FROM `account`", (err, result, fields) => {
                 if (err) res.status(500).send("Database error");
                 else {
-                    const id = result[0];
-                    const user = { id: id };
+                    console.log(result[0]['MAX(id)'])
+                    const id = result[0]['MAX(id)'];
+                    const user = { id: {id : id} };
                     const accessToken = jwt.sign(user, process.env.SECRET, { expiresIn: '3600s' });
                     res.status(200).send({ "token" : accessToken });
                 }

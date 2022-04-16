@@ -12,6 +12,50 @@ import styled from 'styled-components';
 
 const background = require('./images/netflix.jpg');
 
+//<>
+//<div style={{ backgroundImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 1%, rgba(255, 255, 255, 0) 50%), linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, 0) 50%), " + `url(${background})`, height:"1000px", backgroundSize:"cover", backgroundRepeat: "no-repeat"}}>
+//    <div style={{backgroundColor:"black", position:"absolute", opacity:"0.6", height:"60%", width:"20%", top:"20%", left:"40%", right:'40%', borderRadius:"10px", minWidth:"300px"}}>
+//    </div>
+//    <div style={{height:"60%", position:'absolute', width:"20%", top:"20%", left:"40%", right:'40%', minWidth:"300px"}}>
+//        <div style={{marginTop:"10%"}}>
+//        <h1 style={{color:"white", fontSize:"25px", textAlign:"left", marginLeft:"10%", minWidth:"240px"}}>
+//            <style>
+//                @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+//            </style>
+//            Sign In
+//        </h1>
+//        <Input type='text' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="E-mail" onChange={(event) => {check_email(event.target.value)}}></Input>
+//        <input type='password' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="Password" onChange={(event) => {check_password(event.target.value)}}></input>
+//        {error ? <h1 style={{color:"red", fontSize:"15px", marginLeft:'10%', maxWidth:"80%"}}>Ce compte n'existe pas ou le mot de passe est invalide</h1> : <></>}
+//        <Button className="zoom" style={{backgroundColor:"red", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px", fontSize:"100%", borderRadius:"5px", marginTop:"10%", fontWeight:"bold", opacity:(!email || !password) ? 0.5 : 1}} disabled={email == false || password == false} onClick={() => {sendRequest()}} >Sign In</Button>
+//        <div style={{marginTop:"0.5cm", marginLeft:"10%"}}>
+//            <Flexbox flexDirection="row">
+//                <Flexbox justifyContent="space-between" style={{width:"100%"}}>
+//                    <Flexbox justifyContent="flex-start" style={{width:"100%", marginTop:"4%"}}>
+//                    <input type="checkbox" style={{backgroundColor:"white", border:"none"}}></input>
+//                    <style>
+//                        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
+//                    </style>
+//                    <p style={{color:"#737373", marginLeft:'3%', fontSize:"12px"}}>Remember me</p>
+//                    </Flexbox>
+//                    <Flexbox justifyContent="flex-end" style={{width:"100%", marginTop:"4%", marginRight:"10%"}}>
+//                        <p style={{color:"#737373", marginLeft:'3%', fontSize:"12px"}}>Need help?</p>
+//                    </Flexbox>
+//                </Flexbox>
+//            </Flexbox>
+//            <Flexbox flexDirection="row">
+//            <p style={{color:"#737373", marginLeft:'3%', fontSize:"14px"}}>First time using Citrus?</p>
+//            <Link to="/" style={{textDecoration:"none", height:"40px"}}>
+//                <p style={{color:"white", fontSize:"14px", marginLeft:"4px"}}>Sign up</p>
+//            </Link>
+//            </Flexbox>
+//        </div>
+//        </div>
+//    </div>
+//    <ToastContainer theme="dark" position="bottom-right"/>
+//</div>
+//</>
+
 const Login = (props: any) : JSX.Element => {
     injectStyle();
     const navigate = useNavigate();
@@ -57,43 +101,29 @@ const Login = (props: any) : JSX.Element => {
 
     return (
         <>
-            <div style={{ backgroundImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 1%, rgba(255, 255, 255, 0) 50%), linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, 0) 50%), " + `url(${background})`, height:"1000px", backgroundSize:"cover", backgroundRepeat: "no-repeat"}}>
-                <div style={{backgroundColor:"black", position:"absolute", opacity:"0.6", height:"60%", width:"20%", top:"20%", left:"40%", right:'40%', borderRadius:"10px", minWidth:"300px"}}>
-                </div>
-                <div style={{height:"60%", position:'absolute', width:"20%", top:"20%", left:"40%", right:'40%', minWidth:"300px"}}>
-                    <div style={{marginTop:"10%"}}>
-                    <h1 style={{color:"white", fontSize:"25px", textAlign:"left", marginLeft:"10%", minWidth:"240px"}}>
-                        <style>
-                            @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
-                        </style>
-                        Sign In
-                    </h1>
-                    <Input type='text' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="E-mail" onChange={(event) => {check_email(event.target.value)}}></Input>
-                    <input type='password' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="Password" onChange={(event) => {check_password(event.target.value)}}></input>
-                    {error ? <h1 style={{color:"red", fontSize:"15px", marginLeft:'10%', maxWidth:"80%"}}>Ce compte n'existe pas ou le mot de passe est invalide</h1> : <></>}
-                    <Button className="zoom" style={{backgroundColor:"red", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px", fontSize:"100%", borderRadius:"5px", marginTop:"10%", fontWeight:"bold", opacity:(!email || !password) ? 0.5 : 1}} disabled={email == false || password == false} onClick={() => {sendRequest()}} >Sign In</Button>
-                    <div style={{marginTop:"0.5cm", marginLeft:"10%"}}>
-                        <Flexbox flexDirection="row">
-                            <Flexbox justifyContent="space-between" style={{width:"100%"}}>
-                                <Flexbox justifyContent="flex-start" style={{width:"100%", marginTop:"4%"}}>
-                                <input type="checkbox" style={{backgroundColor:"white", border:"none"}}></input>
-                                <style>
-                                    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
-                                </style>
-                                <p style={{color:"#737373", marginLeft:'3%', fontSize:"12px"}}>Remember me</p>
-                                </Flexbox>
-                                <Flexbox justifyContent="flex-end" style={{width:"100%", marginTop:"4%", marginRight:"10%"}}>
-                                    <p style={{color:"#737373", marginLeft:'3%', fontSize:"12px"}}>Need help?</p>
-                                </Flexbox>
-                            </Flexbox>
-                        </Flexbox>
-                        <Flexbox flexDirection="row">
-                        <p style={{color:"#737373", marginLeft:'3%', fontSize:"14px"}}>First time using Citrus?</p>
-                        <Link to="/" style={{textDecoration:"none", height:"40px"}}>
-                            <p style={{color:"white", fontSize:"14px", marginLeft:"4px"}}>Sign up</p>
-                        </Link>
-                        </Flexbox>
+            <div style={{ backgroundImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 1%, rgba(255, 255, 255, 0) 50%), linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, 0) 50%), " + `url(${background})`, position:"absolute", width:"100%", height:"100%", top:"0%", left:"0%", backgroundSize:"cover", backgroundRepeat: "no-repeat"}}>
+                <div style={{position:"absolute", display:"flex", justifyContent:"center", width:"100%", height:"100%"}}>
+                    <div style={{position:"absolute", backgroundColor:"black", opacity:"0.8", width:"450px", height:"600px", borderRadius:"25px", marginTop:"200px"}}>
                     </div>
+                </div>
+                <div style={{display:"flex", justifyContent:"center", width:"100%", height:"100%"}}>
+                    <div style={{position:"absolute", width:"450px", height:"600px", borderRadius:"25px", marginTop:"200px"}}>
+                        <div style={{width:"100%", height:"100%", marginLeft:"1cm"}}>
+                            <style>
+                                @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+                            </style>
+                            <h1 style={{color:"white", marginTop:"1.5cm"}}>Sign In</h1>
+                            <Input type='text' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"375px", height:"50px", marginTop:"25px"}} placeholder="E-mail" onChange={(event) => {check_email(event.target.value)}}></Input>
+                            <input type='password' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"375px", height:"50px", marginTop:"10px"}} placeholder="Password" onChange={(event) => {check_password(event.target.value)}}></input>
+                            <button className="zoom" style={{backgroundColor:"red", border:"none", borderRadius:"7px", width:"335px", height:"50px", color:"white", marginLeft:"20px", marginTop:"30px", fontWeight:"bold", opacity:((email === false || password === false) ? 0.5 : 1)}} disabled={(email === false || password === false)} onClick={() => sendRequest()} >Sign In</button>
+                            <style>
+                                @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
+                            </style>
+                            <div style={{width:"100%", marginTop:"30px", display:"flex", flexDirection:"row"}}>
+                                <p style={{color:"#555"}}> You don't have an account? </p>
+                                <Link to="/register" style={{color:"white", marginTop:"16px", marginLeft:"3px"}}>Register</Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <ToastContainer theme="dark" position="bottom-right"/>
