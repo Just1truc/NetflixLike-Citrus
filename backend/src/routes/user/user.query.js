@@ -2,7 +2,7 @@ const { range } = require("express/lib/request");
 const db = require("./../../config/db_connexion");
 
 function get_account(req, res) {
-    db.query("SELECT * FROM `account` WHERE `id`=?", [req.id], (err, result, fields) => {
+    db.query("SELECT * FROM `account` WHERE `id`=?", [req.id["id"]], (err, result, fields) => {
         if (err) res.sendStatus(400);
         else {
             result[0]["password"] = "*".repeat(result[0]["password"].length)
@@ -35,7 +35,7 @@ function checkPassword(password, commencer, res, req) {
             if (result.length === 0)
                 res.sendStatus(400);
             else {
-                db.query("UPDATE `account` SET " + getDefinedItem(commencer) + " = ? WHERE id = ?", [commencer[getDefinedItem(commencer)], req.id], (err, result, fields) => {
+                db.query("UPDATE `account` SET " + getDefinedItem(commencer) + " = ? WHERE id = ?", [commencer[getDefinedItem(commencer)], req.id["id"]], (err, result, fields) => {
                     if (err) res.sendStatus(500);
                     else
                         res.sendStatus(200);

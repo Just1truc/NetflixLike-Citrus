@@ -65,7 +65,7 @@ const Register = (props : any) : JSX.Element => {
             }
         })
         .catch((err) => {
-            toast.error("Le mail, nom ou prenom existent déjà", {pauseOnHover:false, closeButton:false});
+            toast.error("The mail, name or firstname are already in use", {pauseOnHover:false, closeButton:false});
         })
         console.log(error);
     }
@@ -75,18 +75,18 @@ const Register = (props : any) : JSX.Element => {
             <div style={{ backgroundImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 1%, rgba(255, 255, 255, 0) 50%), linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, 0) 50%), " + `url(${background})`, height:"1000px", backgroundSize:"cover", backgroundRepeat: "no-repeat", width:"100%"}}>
                 <div style={{backgroundColor:"black", opacity:0.8, position:"absolute", height:"100%", width:"600px"}}></div>
                 <div style={{position:"absolute", height:"100%", width:"600px"}}>
-                    <h1 style={{color:"white", marginLeft:"10%", marginTop:"20%"}}>S'inscrire</h1>
+                    <h1 style={{color:"white", marginLeft:"10%", marginTop:"20%"}}>Sign Up</h1>
                     <input type='text' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="Email" value={String(mailValue)} onChange={(event) => {getEmail(event.target.value)}}></input>
-                    <input type='password' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="Mot de passe" onChange={(event) => {getPassword(event.target.value)}}></input>
+                    <input type='password' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="Password" onChange={(event) => {getPassword(event.target.value)}}></input>
                     <Flexbox flexDirection="row">
-                        <input type='text' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"35%", marginLeft:"10%", height:"50px"}} placeholder="Prénom" onChange={(event) => {getFirstname(event.target.value)}}></input>
-                        <input type='text' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"40%", marginLeft:"5%", height:"50px"}} placeholder="Nom" onChange={(event) => {getName(event.target.value)}}></input>
+                        <input type='text' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"35%", marginLeft:"10%", height:"50px"}} placeholder="Firstname" onChange={(event) => {getFirstname(event.target.value)}}></input>
+                        <input type='text' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"40%", marginLeft:"5%", height:"50px"}} placeholder="Name" onChange={(event) => {getName(event.target.value)}}></input>
                     </Flexbox>
                     {error === "none" ?
                         <></>
                     : <h1 style={{color:"red", marginLeft:"10%", fontSize:"15px"}}>Le mail, nom ou prenom existent déjà</h1>}
                     <div style={{width:"25%", height:"60px", minWidth:"100px", marginLeft:"35%", borderRadius:"5px", marginTop:"3%"}}>
-                        <input type="button" className="zoom" style={{backgroundColor:"#e10712", width:"100%", color:"white", border:"none", height:"60px", minWidth:"100px", justifyContent:"center", borderRadius:"5px", fontWeight:"bold", opacity:((mail === "bs" || password === "bs" || firstname === "bs" || name === "bs") ? 0.5 : 1)}} value="S'inscrire" disabled={!(mail != "bs" && password != "bs" && firstname != "bs" && name != "bs")} onClick={() => {sendRequest()}} />
+                        <input type="button" className="zoom" style={{backgroundColor:"#e10712", width:"100%", color:"white", border:"none", height:"60px", minWidth:"100px", justifyContent:"center", borderRadius:"5px", fontWeight:"bold", opacity:((mail === "bs" || password === "bs" || firstname === "bs" || name === "bs") ? 0.5 : 1)}} value="Sign Up" disabled={!(mail != "bs" && password != "bs" && firstname != "bs" && name != "bs")} onClick={() => {sendRequest()}} />
                     </div>
                 </div>
                 <ToastContainer theme="dark" position="bottom-right"/>

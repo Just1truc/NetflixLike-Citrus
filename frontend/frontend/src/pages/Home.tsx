@@ -26,7 +26,7 @@ const Home = ():JSX.Element => {
                 </Flexbox>
                         <Flexbox justifyContent="flex-end" marginRight='1cm' marginTop='0.8cm'>
                             <Link to="/login" style={{textDecoration:"none", height:"40px"}}>
-                                <input type="button" style={{backgroundColor:"#e10712", width:"25%", color:"white", border:"none", height:"40px", minWidth:"100px", justifyContent:"center", borderRadius:"5px", fontWeight:"bold"}} value="S'identifier" />
+                                <input type="button" style={{backgroundColor:"#e10712", width:"25%", color:"white", border:"none", height:"40px", minWidth:"100px", justifyContent:"center", borderRadius:"5px", fontWeight:"bold"}} value="Sign In" />
                             </Link>
                         </Flexbox>
                 </Flexbox>
@@ -35,24 +35,24 @@ const Home = ():JSX.Element => {
                         <style>
                             @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
                         </style>
-                        Films, séries TV et bien<br/>plus en illimité.
+                        Unlimited movies, TV<br/>shows, and more.
                     </h1>
                     <p style={{color:"white", textAlign:"center", fontSize:"1.5vw", minWidth:"240px"}}>
                         <style>
                             @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
                         </style>
-                        Où que vous soyez. Annulez à tout moment.
+                        Watch anywhere. Cancel anytime.
                     </p>
                     <p style={{color:"white", textAlign:"center", fontSize:"1vw", minWidth:"240px"}}>
-                        Prêt à regarder Citrus? Saisissez votre adresse e-mail<br/>
-                        pour vous abonner ou réactiver votre abonnement.
+                        Ready to watch? Enter your email<br/>
+                        to create or restart your membership.
                     </p>
                     <form style={{justifyContent:"center"}}>
                       <label>
                         <input type="text" style={{backgroundColor:"white", border: "solid 1px grey", height:"60px", width:"100%", minWidth:"240px", color:"grey", borderRadius:"5px", fontSize:"120%" }} name="name" placeholder="E-mail" onChange={(event) => {check_input(event.target.value)}}/>
                       </label>
                       <Link to={{pathname: "/register"}} style={{width:"25%", height:"60px", minWidth:"100px", marginLeft:"35%", borderRadius:"5px", marginTop:"3%"}} onClick={(event) => {localStorage.setItem("teub", activated)}}>
-                        <input type="button" className='zoom' style={{backgroundColor:"#e10712", width:"25%", color:"white", border:"none", height:"60px", minWidth:"100px", justifyContent:"center", borderRadius:"5px", marginTop:"3%", fontWeight:"bold", opacity:(activated === "nope" ? 0.5 : 1)}} value="Commencer >" disabled={!(activated != "nope")} />
+                        <input type="button" className='zoom' style={{backgroundColor:"#e10712", width:"25%", color:"white", border:"none", height:"60px", minWidth:"100px", justifyContent:"center", borderRadius:"5px", marginTop:"3%", fontWeight:"bold", opacity:(activated === "nope" ? 0.5 : 1)}} value="Get started" disabled={!(activated != "nope")} />
                       </Link>
                     </form>
                 </div>

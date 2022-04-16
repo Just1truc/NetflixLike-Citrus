@@ -22,8 +22,7 @@ const Login = (props: any) : JSX.Element => {
 
     function check_email(value: any) {
         var regex = new RegExp("^([a-zA-Z0-9+-|_~(){}$?]+@+[a-zA-Z0-9+-|_~(){}$?]+\\.+[a-zA-Z]+)$");
-        var regex2 = new RegExp("^[0-9 ]$")
-        if (regex.test(value) == true || regex2.test(value) == true)
+        if (regex.test(value) == true)
             setEmail(value);
         else
             setEmail(false);
@@ -51,7 +50,7 @@ const Login = (props: any) : JSX.Element => {
                 }
             })
             .catch((err) => {
-                toast.error("Ce compte n'existe pas ou le mot de passe est invalide", {pauseOnHover:false, closeButton:false});
+                toast.error("This account does not exist or the password is not valid", {pauseOnHover:false, closeButton:false});
             });
         }
     }
@@ -67,12 +66,12 @@ const Login = (props: any) : JSX.Element => {
                         <style>
                             @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
                         </style>
-                        S'identifier
+                        Sign In
                     </h1>
-                    <Input type='text' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="E-mail ou numéro de téléphone" onChange={(event) => {check_email(event.target.value)}}></Input>
-                    <input type='password' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="Mot de passe" onChange={(event) => {check_password(event.target.value)}}></input>
+                    <Input type='text' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="E-mail" onChange={(event) => {check_email(event.target.value)}}></Input>
+                    <input type='password' className='Input-class' style={{backgroundColor:"#333333", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px"}} placeholder="Password" onChange={(event) => {check_password(event.target.value)}}></input>
                     {error ? <h1 style={{color:"red", fontSize:"15px", marginLeft:'10%', maxWidth:"80%"}}>Ce compte n'existe pas ou le mot de passe est invalide</h1> : <></>}
-                    <Button className="zoom" style={{backgroundColor:"red", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px", fontSize:"100%", borderRadius:"5px", marginTop:"10%", fontWeight:"bold", opacity:(!email || !password) ? 0.5 : 1}} disabled={email == false || password == false} onClick={() => {sendRequest()}} >S'identifier</Button>
+                    <Button className="zoom" style={{backgroundColor:"red", color:"#FAFAFA", border:"none", width:"80%", marginLeft:"10%", height:"50px", fontSize:"100%", borderRadius:"5px", marginTop:"10%", fontWeight:"bold", opacity:(!email || !password) ? 0.5 : 1}} disabled={email == false || password == false} onClick={() => {sendRequest()}} >Sign In</Button>
                     <div style={{marginTop:"0.5cm", marginLeft:"10%"}}>
                         <Flexbox flexDirection="row">
                             <Flexbox justifyContent="space-between" style={{width:"100%"}}>
@@ -81,17 +80,17 @@ const Login = (props: any) : JSX.Element => {
                                 <style>
                                     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
                                 </style>
-                                <p style={{color:"#737373", marginLeft:'3%', fontSize:"12px"}}>Se souvenir de moi</p>
+                                <p style={{color:"#737373", marginLeft:'3%', fontSize:"12px"}}>Remember me</p>
                                 </Flexbox>
                                 <Flexbox justifyContent="flex-end" style={{width:"100%", marginTop:"4%", marginRight:"10%"}}>
-                                    <p style={{color:"#737373", marginLeft:'3%', fontSize:"12px"}}>Besoin d'aide?</p>
+                                    <p style={{color:"#737373", marginLeft:'3%', fontSize:"12px"}}>Need help?</p>
                                 </Flexbox>
                             </Flexbox>
                         </Flexbox>
                         <Flexbox flexDirection="row">
-                        <p style={{color:"#737373", marginLeft:'3%', fontSize:"14px"}}>Première visite sur Citrus?</p>
+                        <p style={{color:"#737373", marginLeft:'3%', fontSize:"14px"}}>First time using Citrus?</p>
                         <Link to="/" style={{textDecoration:"none", height:"40px"}}>
-                            <p style={{color:"white", fontSize:"14px", marginLeft:"4px"}}>Inscrivez-vous.</p>
+                            <p style={{color:"white", fontSize:"14px", marginLeft:"4px"}}>Sign up</p>
                         </Link>
                         </Flexbox>
                     </div>
