@@ -58,7 +58,7 @@ const ChangeWindow = (props: any) : JSX.Element => {
                                 <input type="password" style={{backgroundColor:"#252525", border:"none", color:"white", height:"60px", width:"100%", borderRadius:"15px", paddingLeft:"20px", maxWidth:"500px", marginTop:"30px", fontSize:"16px"}} placeholder="Password" onChange={(event) => setPassword(testPassword(event.target.value))}/>
                                 <input type={props.Type === "Password" ? "password" : "text"} style={{backgroundColor:"#252525", border:"none", color:"white", height:"60px", width:"100%", borderRadius:"15px", paddingLeft:"20px", maxWidth:"500px", marginTop:"30px", fontSize:"16px"}} placeholder={"New " + props.Type} onChange={(event) => setValue(props.test(event.target.value))} />
                                 <input type={props.Type === "Password" ? "password" : "text"} style={{backgroundColor:"#252525", border:"none", color:"white", height:"60px", width:"100%", borderRadius:"15px", paddingLeft:"20px", maxWidth:"500px", marginTop:"30px", fontSize:"16px"}} placeholder={"Confirm New " + props.Type} onChange={(event) => setConfirmValue(props.test(event.target.value))} />
-                                <Button className="zoom" style={{backgroundColor:"red", border:"none", color:"white", height:"60px", width:"100%", borderRadius:"15px", maxWidth:"500px", marginTop:"50px", marginLeft:"10px", fontSize:"22px", fontWeight:"bold", opacity:(password !== false && confirmValue !== false && value !== false && confirmValue === value ? 1 : 0.5)}} onClick={() => sendUpdate()} disabled={!(password !== false && confirmValue !== false && value !== false && confirmValue === value)} >Valider</Button>
+                                <Button className="zoom" style={{backgroundColor:"red", border:"none", color:"white", height:"60px", width:"100%", borderRadius:"15px", maxWidth:"500px", marginTop:"50px", marginLeft:"10px", fontSize:"22px", fontWeight:"bold", opacity:(password !== false && confirmValue !== false && value !== false && confirmValue === value ? 1 : 0.5)}} onClick={() => sendUpdate()} disabled={!(password !== false && confirmValue !== false && value !== false && confirmValue === value)} >Modify</Button>
                             </div>
                         </Flexbox>
                     </div>
@@ -79,7 +79,7 @@ const Info = (props : any) : JSX.Element => {
     )
 }
 
-const Account = () : JSX.Element => {
+const Account = (props: any) : JSX.Element => {
 
     injectStyle();
     const navigate = useNavigate();
@@ -160,6 +160,7 @@ const Account = () : JSX.Element => {
                             <Button className="zoom" style={{height:"50px", marginTop:"25px",border:"none", fontFamily:"sans-serif", fontSize:"16px", marginLeft:"1cm", backgroundColor:"red", fontWeight:"bold", borderRadius:"7px", color:"white", width:"200px"}} onClick={() => setPassword(true)} >Change Password</Button>
                         </div>
                     </Flexbox>
+                    <Button className="zoom" style={{height:"50px", marginTop:"50px", width:"20%", color:"white", backgroundColor:"red", border:"none", borderRadius:"7px", fontWeight:"bold", fontSize:"16px"}} onClick={() => {props.setConnection(); localStorage.clear(); navigate(`/`)}} >Disconnect</Button>
                 </div>
                 <div style={{position:"fixed", height:"120px", backgroundColor:"#181818", border:"solid #181818", width:"100%", top:"0%"}}>
                     <img src={logo} height="100px" width="100px" style={{marginLeft:"1cm", marginTop:"0.3cm"}} onClick={() => RedirectToBrowse()}/>

@@ -52,7 +52,7 @@ const Browse = ():JSX.Element => {
         .then((response) => {
             const data : any = [];
             for (var item in response.data)
-                data.push(<div style={{width:"210px"}}><img id={response.data[item]['show_id']} width="200px" height="300px" className='zoom' src={response.data[item]["picture"]}  style={{marginLeft:"5px", marginRight:"5px", objectFit:"cover"}} onClick={(event) => {setVisible(true); setFocus(event.currentTarget.id)}}></img></div>)
+                data.push(<div style={{width:"210px"}}><img id={response.data[item]['show_id']} alt={response.data[item]['show_id']} width="200px" height="300px" className='zoom' src={response.data[item]["picture"]}  style={{marginLeft:"5px", marginRight:"5px", objectFit:"cover"}} onClick={(event) => {setVisible(true); setFocus(event.currentTarget.id)}}></img></div>)
             setOutput(data);
         })
     }
@@ -65,9 +65,9 @@ const Browse = ():JSX.Element => {
             const Movies : any = [];
             for (var item in response.data) {
                 if (response.data[item]["type"] === "TV Show")
-                    serie.push(<div style={{width:"210px"}}><img id={response.data[item]['show_id']} width="200px" height="300px" className='zoom' src={response.data[item]["picture"]}  style={{marginLeft:"5px", marginRight:"5px", objectFit:"cover"}} onClick={(event) => {setVisible(true); setFocus(event.currentTarget.id)}}></img></div>);
+                    serie.push(<div style={{width:"210px"}}><img id={response.data[item]['show_id']} alt={response.data[item]['show_id']} width="200px" height="300px" className='zoom' src={response.data[item]["picture"]}  style={{marginLeft:"5px", marginRight:"5px", objectFit:"cover"}} onClick={(event) => {setVisible(true); setFocus(event.currentTarget.id)}}></img></div>);
                 else
-                    Movies.push(<div style={{width:"210px"}}><img id={response.data[item]['show_id']} width="200px" height="300px" className='zoom' src={response.data[item]["picture"]}  style={{marginLeft:"5px", marginRight:"5px", objectFit:"cover"}} onClick={(event) => {setVisible(true); setFocus(event.currentTarget.id)}}></img></div>);
+                    Movies.push(<div style={{width:"210px"}}><img id={response.data[item]['show_id']} alt={response.data[item]['show_id']} width="200px" height="300px" className='zoom' src={response.data[item]["picture"]}  style={{marginLeft:"5px", marginRight:"5px", objectFit:"cover"}} onClick={(event) => {setVisible(true); setFocus(event.currentTarget.id)}}></img></div>);
             }
             setMovies(Movies);
             setSeries(serie);
