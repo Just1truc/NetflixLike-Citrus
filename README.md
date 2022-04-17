@@ -72,7 +72,7 @@ cd frontend/frontend && npm run start
 
 ## Usage <a name=“usage”></a>
 
-If the project is launch, you can now check it going on any browser using this url:
+If the project is started, you can now check it by going on any browser using this url:
 
 ```bash
 http://locahost:3000/
